@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom, #e6f0ff, #ccf2ff);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.bar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(6px);
+    padding: 0.5em 1em;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    flex-direction: row;
+}
+
+.icon-image {
+    height: 2.2em; /* Match project-name font size */
+    width: 2.2em;
+    background-size: cover;
+    border-radius: 50%;
+    margin-right: 1em;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-right: 0.8em;
+    margin-bottom: 0.1em;
+    display: flex;
+    align-items: center;
+}
+
+.tools {
+    display: flex;
+    gap: 0.3em;
+    align-items: center;
+}
+
+.btn {
+    background: linear-gradient(to bottom, #d7f3ff, #b2e0ff);
+    border: 1px solid #81c4e8;
+    border-radius: 8px;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background: linear-gradient(to bottom, #c4ebff, #98d8ff);
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+/* Dropdown container */
+.btn::after {
+    content: '▼';
+    font-size: 0.6rem;
+    margin-left: 5px;
+}
+
+.dropdown {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background: white;
+    border: 1px solid #b3d9ff;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    display: none;
+    flex-direction: column;
+    min-width: 150px;
+    z-index: 100;
+}
+
+.btn:hover .dropdown {
+    display: flex;
+}
+
+.dropdown button {
+    padding: 0.6rem 1rem;
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.dropdown button:hover {
+    background-color: #e6f7ff;
+}
+
+/* Editor container */
+.presentation-editor-container {
+    flex-grow: 1;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.presentation-editor {
+    width: 80%;
+    height: 70vh;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide {
+    width: 90%;
+    height: 90%;
+    border: 2px dashed #a6cbe8;
+    background: #f9fcff;
+    border-radius: 10px;
+}
+
+/* Footer */
+footer {
+    background: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    padding: 0.7rem;
+    font-size: 0.85rem;
+    color: #555;
+    border-top: 1px solid #b3d9ff;
+}
