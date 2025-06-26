@@ -1,12 +1,11 @@
 ﻿// ReSharper disable VirtualMemberCallInConstructor
 namespace EduDeck.Data.Models
 {
+    using EduDeck.Data.Common.Models;
+    using Microsoft.AspNetCore.Identity;
     using System;
     using System.Collections.Generic;
-
-    using EduDeck.Data.Common.Models;
-
-    using Microsoft.AspNetCore.Identity;
+    using System.ComponentModel.DataAnnotations;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
@@ -33,5 +32,13 @@ namespace EduDeck.Data.Models
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string UserName { get; set; } = string.Empty;
+
+        public ICollection<Presentation> CreatedPresentations { get; set; } = new List<Presentation>();
+
+        public ICollection<PresentationParticipant> SharedPresentations { get; set; } = new List<PresentationParticipant>();
     }
 }
