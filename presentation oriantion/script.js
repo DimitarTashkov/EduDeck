@@ -1,20 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Create canvas once
     var canvas = new fabric.Canvas('slide-canvas', {
         selection: false
     });
 
-    // Add default rectangle (optional)
-    var rect = new fabric.Rect({
-        left: 100,
-        top: 100,
-        fill: 'blue',
-        width: 200,
-        height: 100,
-        angle: 0
-    });
-
-    // Shape creation with type + color
+    // Add shape
     const shapeSelect = document.getElementById('shape-select');
     const shapeColor = document.getElementById('shape-color');
     const addShapeBtn = document.getElementById('tool-add-shape');
@@ -34,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     height: 50
                 });
                 break;
-
             case 'circle':
                 shape = new fabric.Circle({
                     left: 150,
@@ -43,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     radius: 50
                 });
                 break;
-
             case 'triangle':
                 shape = new fabric.Triangle({
                     left: 150,
@@ -55,18 +42,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 break;
         }
 
-        if (shape) {
-            canvas.add(shape);
-        }
+        if (shape) canvas.add(shape);
     });
 
-    // Text Button Click
-    document.getElementById("tool-text").addEventListener("click", function () {
-        var text = new fabric.IText('Edit me', {
+    // Add text with font and size
+    const textBtn = document.getElementById("tool-text");
+    const fontFamilySelect = document.getElementById("font-family");
+    const fontSizeInput = document.getElementById("font-size");
+
+    textBtn.addEventListener("click", function () {
+        const fontFamily = fontFamilySelect.value;
+        const fontSize = parseInt(fontSizeInput.value) || 24;
+
+        const text = new fabric.IText('Edit me', {
             left: 200,
             top: 200,
-            fontFamily: 'Arial',
-            fontSize: 24,
+            fontFamily: fontFamily,
+            fontSize: fontSize,
             fill: 'black'
         });
         canvas.add(text);
@@ -75,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
         text.selectAll();
     });
 
-    // Delete key functionality
+    // Delete object
     document.addEventListener('keydown', function(e) {
         if ((e.key === "Delete" || e.key === "Backspace") &&
             document.activeElement.tagName !== 'INPUT' &&
@@ -89,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Image upload button
+    // Image upload
     const fileInput = document.getElementById('upload-image');
     const imageBtn = document.getElementById('tool-image');
 
@@ -117,7 +109,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         };
         reader.readAsDataURL(file);
-
         fileInput.value = "";
     });
 });
