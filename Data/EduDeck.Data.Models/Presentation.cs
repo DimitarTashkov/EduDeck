@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EduDeck.Data.Common.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace EduDeck.Data.Models
 {
-    public class Presentation
+    public class Presentation : BaseDeletableModel<Guid>
     {
         [Key]
         public Guid Id { get; set; }

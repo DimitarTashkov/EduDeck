@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace EduDeck.Data.Models
 {
+    using EduDeck.Data.Common.Models;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Element
+    public class Element : BaseDeletableModel<Guid>
     {
         [Key]
         public Guid Id { get; set; }
@@ -55,12 +56,10 @@ namespace EduDeck.Data.Models
         public int ZIndex { get; set; } = 0;
 
         [Required]
-        public bool IsDeleted { get; set; } = false;
-
-        [Required]
         public Guid SlideId { get; set; }
 
         [ForeignKey(nameof(SlideId))]
         public Slide Slide { get; set; } = default!;
+
     }
 }

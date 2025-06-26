@@ -7,10 +7,11 @@ using System.Xml.Linq;
 
 namespace EduDeck.Data.Models
 {
+    using EduDeck.Data.Common.Models;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Slide
+    public class Slide : BaseDeletableModel<Guid>
     {
         [Key]
         public Guid Id { get; set; }
@@ -29,6 +30,5 @@ namespace EduDeck.Data.Models
         [Required]
         public bool IsDeleted { get; set; } = false;
     }
-
 
 }

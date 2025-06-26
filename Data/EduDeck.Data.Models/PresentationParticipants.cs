@@ -1,4 +1,5 @@
-﻿using EduDeck.Data.Models.Enumerations;
+﻿using EduDeck.Data.Common.Models;
+using EduDeck.Data.Models.Enumerations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace EduDeck.Data.Models
 {
-    public class PresentationParticipant
+    public class PresentationParticipant : BaseDeletableModel<Guid>
     {
         [Key]
-        public Guid Id { get; set; } = Guid.NewGuid(); // Optional unique key
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
         public Guid PresentationId { get; set; }
