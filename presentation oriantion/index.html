@@ -122,29 +122,7 @@
   <footer>
     <p>&copy; 2025 - "IVANOV GROUP - 2025" LTD.</p>
   </footer>
-  
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var canvas = new fabric.Canvas('slide-canvas', {
-        selection: false
-      });
-  
-      function addShape() {
-        var rect = new fabric.Rect({
-          left: 100,
-          top: 100,
-          fill: 'blue',
-          width: 200,
-          height: 100,
-          angle: 0
-        });
-        canvas.add(rect);
-      }
-  
-      document.getElementById("tool-shape").addEventListener("click", addShape);
-    });
-  </script>
-  
+  <script src="script.js"></script>
 
 </body>
 </html>
