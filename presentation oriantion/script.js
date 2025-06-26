@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Create canvas once
     var canvas = new fabric.Canvas('slide-canvas', {
         selection: false
     });
 
-    // Add a default rectangle
+    // Add default rectangle (optional)
     var rect = new fabric.Rect({
         left: 100,
         top: 100,
@@ -21,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
     addShapeBtn.addEventListener("click", function () {
         const type = shapeSelect.value;
         const color = shapeColor.value;
-
         let shape;
 
         switch (type) {
@@ -87,5 +87,37 @@ document.addEventListener("DOMContentLoaded", function () {
                 canvas.requestRenderAll();
             }
         }
+    });
+
+    // Image upload button
+    const fileInput = document.getElementById('upload-image');
+    const imageBtn = document.getElementById('tool-image');
+
+    imageBtn.addEventListener('click', () => {
+        fileInput.click();
+    });
+
+    fileInput.addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function (f) {
+            const data = f.target.result;
+
+            fabric.Image.fromURL(data, function (img) {
+                img.set({
+                    left: 100,
+                    top: 100,
+                    scaleX: 0.5,
+                    scaleY: 0.5
+                });
+                canvas.add(img);
+                canvas.requestRenderAll();
+            });
+        };
+        reader.readAsDataURL(file);
+
+        fileInput.value = "";
     });
 });
