@@ -5,62 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ORIENTATION</title>
   <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
 </head>
 <body>
-
-  <!-- Top Toolbar -->
-  <header class="toolbar">
-    <div class="icon">
-      <img src="img/icon.png" alt="App Icon" class="icon-image" />
-    </div>
-    <div class="project-name">
-      <h4>Project Name</h4>
-    </div>
-    <nav class="tools">
-      <button class="btn btn-file">File
-        <div class="dropdown">
-          <ul>
-            <li class="dropdown-item">New</li>
-            <li class="dropdown-item">Open</li>
-            <li class="dropdown-item">Save</li>
-            <li class="dropdown-item">Export</li>
-            <li class="dropdown-item">Close</li>
-          </ul>
+    <!-- Top Toolbar -->
+    <header class="toolbar">
+        <div class="icon">
+            <img src="img/icon.png" alt="App Icon" class="icon-image" />
         </div>
-      </button>
-      <button class="btn btn-undo">Undo</button>
-      <button class="btn btn-redo">Redo</button>
-      <button class="btn btn-insert">Insert
-        <div class="dropdown">
-          <ul>
-            <li class="dropdown-item">Image</li>
-            <li class="dropdown-item">Text</li>
-            <li class="dropdown-item">Shape</li>
-            <li class="dropdown-item">Video</li>
-          </ul>
+        <div class="project-name">
+            <h4>Project Name</h4>
         </div>
-      </button>
-      <button class="btn btn-slide">Slide
-        <div class="dropdown">
-          <ul>
-            <li class="dropdown-item">New Slide</li>
-            <li class="dropdown-item">Duplicate Slide</li>
-            <li class="dropdown-item">Delete Slide</li>
-            <li class="dropdown-item">Slide Layout</li>
-          </ul>
-        </div>
-      </button>
-      <button class="btn btn-help">Help
-        <div class="dropdown">
-          <ul>
-            <li class="dropdown-item">Documentation</li>
-            <li class="dropdown-item">Support</li>
-            <li class="dropdown-item">About</li>
-          </ul>
-        </div>
-      </button>
-    </nav>
-  </header>
+        <nav class="tools">
+            <button class="btn btn-file">File
+            <div class="dropdown">
+            <ul>
+                <li class="dropdown-item">New</li>
+                <li class="dropdown-item">Open</li>
+                <li class="dropdown-item">Save</li>
+                <li class="dropdown-item">Export</li>
+                <li class="dropdown-item">Close</li>
+            </ul>
+            </div>
+        </button>
+        <button class="btn btn-undo">Undo</button>
+        <button class="btn btn-redo">Redo</button>
+        <button class="btn btn-insert">Insert
+            <div class="dropdown">
+            <ul>
+                <li class="dropdown-item">Image</li>
+                <li class="dropdown-item">Text</li>
+                <li class="dropdown-item">Shape</li>
+                <li class="dropdown-item">Video</li>
+            </ul>
+            </div>
+        </button>
+        <button class="btn btn-slide">Slide
+            <div class="dropdown">
+            <ul>
+                <li class="dropdown-item">New Slide</li>
+                <li class="dropdown-item">Duplicate Slide</li>
+                <li class="dropdown-item">Delete Slide</li>
+                <li class="dropdown-item">Slide Layout</li>
+            </ul>
+            </div>
+        </button>
+        <button class="btn btn-help">Help
+            <div class="dropdown">
+            <ul>
+                <li class="dropdown-item">Documentation</li>
+                <li class="dropdown-item">Support</li>
+                <li class="dropdown-item">About</li>
+            </ul>
+            </div>
+        </button>
+        </nav>
+    </header>
 
   <!-- Editor Container -->
   <main class="editor-container">
@@ -94,12 +94,12 @@
         <div class="sidebar-header">
           <h3>Tools</h3>
         </div>
-        <ul class="tool-list">
-          <li class="tool-item">🅣 Text</li>
-          <li class="tool-item">🖼 Image</li>
-          <li class="tool-item">⬛ Shape</li>
-          <li class="tool-item">🎥 Video</li>
-        </ul>
+        <div class="tool-list">
+          <input type="button" id="tool-text" class="tool-item" value="🅣 Text">
+          <input type="button" id="tool-image" class="tool-item" value="🖼 Image">
+          <input type="button" id="tool-shape" class="tool-item" value="⬛ Shape">
+          <input type="button" id="tool-video" class="tool-item" value="🎥 Video">
+        </div>
       </section>
 
     </aside>
@@ -111,7 +111,7 @@
       </div>
       <div class="slide-canvas">
         <div class="slide" contenteditable="true">
-          <p style="color: #aaa;">(Start editing your slide...)</p>
+          <canvas id="slide-canvas" width="1000" height="563"></canvas>
         </div>
         <div class="add-slide-btn" title="Add New Slide">＋</div>
       </div>
@@ -122,6 +122,29 @@
   <footer>
     <p>&copy; 2025 - "IVANOV GROUP - 2025" LTD.</p>
   </footer>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var canvas = new fabric.Canvas('slide-canvas', {
+        selection: false
+      });
+  
+      function addShape() {
+        var rect = new fabric.Rect({
+          left: 100,
+          top: 100,
+          fill: 'blue',
+          width: 200,
+          height: 100,
+          angle: 0
+        });
+        canvas.add(rect);
+      }
+  
+      document.getElementById("tool-shape").addEventListener("click", addShape);
+    });
+  </script>
+  
 
 </body>
 </html>
