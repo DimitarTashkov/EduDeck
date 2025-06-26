@@ -13,19 +13,51 @@ document.addEventListener("DOMContentLoaded", function () {
         angle: 0
     });
 
-    canvas.add(rect);
+    // Shape creation with type + color
+    const shapeSelect = document.getElementById('shape-select');
+    const shapeColor = document.getElementById('shape-color');
+    const addShapeBtn = document.getElementById('tool-add-shape');
 
-    // Shape Button Click
-    document.getElementById("tool-shape").addEventListener("click", function () {
-        var newRect = new fabric.Rect({
-            left: 150,
-            top: 150,
-            fill: 'green',
-            width: 100,
-            height: 50,
-            angle: 0
-        });
-        canvas.add(newRect);
+    addShapeBtn.addEventListener("click", function () {
+        const type = shapeSelect.value;
+        const color = shapeColor.value;
+
+        let shape;
+
+        switch (type) {
+            case 'rect':
+                shape = new fabric.Rect({
+                    left: 150,
+                    top: 150,
+                    fill: color,
+                    width: 100,
+                    height: 50
+                });
+                break;
+
+            case 'circle':
+                shape = new fabric.Circle({
+                    left: 150,
+                    top: 150,
+                    fill: color,
+                    radius: 50
+                });
+                break;
+
+            case 'triangle':
+                shape = new fabric.Triangle({
+                    left: 150,
+                    top: 150,
+                    fill: color,
+                    width: 100,
+                    height: 100
+                });
+                break;
+        }
+
+        if (shape) {
+            canvas.add(shape);
+        }
     });
 
     // Text Button Click
@@ -41,19 +73,6 @@ document.addEventListener("DOMContentLoaded", function () {
         canvas.setActiveObject(text);
         text.enterEditing();
         text.selectAll();
-    });
-
-    // Image Button Click (placeholder logic, actual image loading requires input)
-    document.getElementById("tool-image").addEventListener("click", function () {
-        fabric.Image.fromURL('https://via.placeholder.com/150', function(img) {
-            img.set({
-                left: 250,
-                top: 250,
-                scaleX: 0.5,
-                scaleY: 0.5
-            });
-            canvas.add(img);
-        });
     });
 
     // Delete key functionality

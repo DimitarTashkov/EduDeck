@@ -97,7 +97,19 @@
         <div class="tool-list">
           <input type="button" id="tool-text" class="tool-item" value="🅣 Text">
           <input type="button" id="tool-image" class="tool-item" value="🖼 Image">
-          <input type="button" id="tool-shape" class="tool-item" value="⬛ Shape">
+          
+          <div class="tool-shape-group">
+            <label>Shape:</label>
+            <select id="shape-select" class="tool-dropdown">
+              <option value="rect">Rectangle</option>
+              <option value="circle">Circle</option>
+              <option value="triangle">Triangle</option>
+            </select>
+            <label>Color:</label>
+            <input type="color" id="shape-color" value="#2196f3">
+            <button id="tool-add-shape" class="tool-item">➕ Add Shape</button>
+          </div>
+      
           <input type="button" id="tool-video" class="tool-item" value="🎥 Video">
         </div>
       </section>
