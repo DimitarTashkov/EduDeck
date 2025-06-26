@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ORIANTATION</title>
+  <title>ORIENTATION</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="bar">
+
+  <!-- Top Toolbar -->
+  <header class="toolbar">
     <div class="icon">
-      <img src="img/icon.png" alt="Icon" class="icon-image" />
+      <img src="img/icon.png" alt="App Icon" class="icon-image" />
     </div>
     <div class="project-name">
-      <h4>Project name</h4>
+      <h4>Project Name</h4>
     </div>
-    <div class="tools">
-      <button class="btn btn-file">
-        File
+    <nav class="tools">
+      <button class="btn btn-file">File
         <div class="dropdown">
           <ul>
             <li class="dropdown-item">New</li>
@@ -29,8 +30,7 @@
       </button>
       <button class="btn btn-undo">Undo</button>
       <button class="btn btn-redo">Redo</button>
-      <button class="btn btn-insert">
-        Insert
+      <button class="btn btn-insert">Insert
         <div class="dropdown">
           <ul>
             <li class="dropdown-item">Image</li>
@@ -40,8 +40,7 @@
           </ul>
         </div>
       </button>
-      <button class="btn btn-slide">
-        Slide
+      <button class="btn btn-slide">Slide
         <div class="dropdown">
           <ul>
             <li class="dropdown-item">New Slide</li>
@@ -51,8 +50,7 @@
           </ul>
         </div>
       </button>
-      <button class="btn btn-help">
-        Help
+      <button class="btn btn-help">Help
         <div class="dropdown">
           <ul>
             <li class="dropdown-item">Documentation</li>
@@ -61,46 +59,69 @@
           </ul>
         </div>
       </button>
-    </div>
-  </div>
+    </nav>
+  </header>
 
-  <div class="presentation-editor-container">
-    <div class="left-side">
-      <div class="sidebar-slides">
+  <!-- Editor Container -->
+  <main class="editor-container">
+    
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+
+      <!-- Slide Thumbnails -->
+      <section class="slides-panel">
         <div class="sidebar-header">
           <h3>Slides</h3>
-          <div class="sidebar-slides">
-            <div class="mini-slide" data-slide-id="1"></div>
-            <div class="mini-slide" data-slide-id="2"></div>
-            <div class="mini-slide" data-slide-id="3"></div>
-          </div>          
         </div>
-        <div class="sidebar-content">
-          <ul class="slide-list"></ul>
+        <div class="slide-thumbnails">
+          <div class="mini-slide selected" data-slide-id="1">
+            <span class="slide-number">1</span>
+            <div class="slide-thumbnail"></div>
+          </div>
+          <div class="mini-slide" data-slide-id="2">
+            <span class="slide-number">2</span>
+            <div class="slide-thumbnail"></div>
+          </div>
+          <div class="mini-slide" data-slide-id="3">
+            <span class="slide-number">3</span>
+            <div class="slide-thumbnail"></div>
+          </div>
         </div>
-      </div>
-      <div class="sidebar-tools">
+      </section>
+
+      <!-- Tools List -->
+      <section class="tools-panel">
         <div class="sidebar-header">
           <h3>Tools</h3>
         </div>
-        <div class="sidebar-content">
-          <ul class="tool-list">
-            <li class="tool-item">Text</li>
-            <li class="tool-item">Image</li>
-            <li class="tool-item">Shape</li>
-            <li class="tool-item">Video</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="presentation-editor">
-      <div class="slide"></div>
-      <div class="plus-sign"></div>
-    </div>
-  </div>
+        <ul class="tool-list">
+          <li class="tool-item">🅣 Text</li>
+          <li class="tool-item">🖼 Image</li>
+          <li class="tool-item">⬛ Shape</li>
+          <li class="tool-item">🎥 Video</li>
+        </ul>
+      </section>
 
+    </aside>
+
+    <!-- Main Slide Canvas -->
+    <section class="canvas-area">
+      <div class="canvas-header">
+        <p>Editing Slide 1</p>
+      </div>
+      <div class="slide-canvas">
+        <div class="slide" contenteditable="true">
+          <p style="color: #aaa;">(Start editing your slide...)</p>
+        </div>
+        <div class="add-slide-btn" title="Add New Slide">＋</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
   <footer>
-    <p>2025 - "IVANOV GROUP - 2025" LTD.</p>
+    <p>&copy; 2025 - "IVANOV GROUP - 2025" LTD.</p>
   </footer>
+
 </body>
 </html>
