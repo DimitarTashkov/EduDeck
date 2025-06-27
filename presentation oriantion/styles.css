@@ -239,3 +239,20 @@
     border-top: 1px solid #b3d9ff;
   }
   
+
+  #yt-wrapper {
+      position: absolute;
+      top: 100px;
+      left: 100px;
+      width: 320px;
+      height: 180px;
+      resize: both;
+      overflow: hidden;
+      z-index: 1000;
+    }
+    #yt-player {
+      width: 100%;
+      height: 100%;
+      border: none;
+      pointer-events: auto;
+    }

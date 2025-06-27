@@ -1,147 +1,157 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ORIENTATION</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
-</head>
-<body>
-  <!-- Top Toolbar -->
-  <header class="toolbar">
-    <div class="icon">
-      <img src="img/icon.png" alt="App Icon" class="icon-image" />
-    </div>
-    <div class="project-name">
-      <h4>Project Name</h4>
-    </div>
-    <nav class="tools">
-      <button class="btn btn-file">File
-        <div class="dropdown">
-          <ul>
-            <li class="dropdown-item">New</li>
-            <li class="dropdown-item">Open</li>
-            <li class="dropdown-item">Save</li>
-            <li class="dropdown-item">Export</li>
-            <li class="dropdown-item">Close</li>
-          </ul>
-        </div>
-      </button>
-      <button class="btn btn-undo">Undo</button>
-      <button class="btn btn-redo">Redo</button>
-      <button class="btn btn-insert">Insert
-        <div class="dropdown">
-          <ul>
-            <li class="dropdown-item">Image</li>
-            <li class="dropdown-item">Text</li>
-            <li class="dropdown-item">Shape</li>
-            <li class="dropdown-item">Video</li>
-          </ul>
-        </div>
-      </button>
-      <button class="btn btn-slide">Slide
-        <div class="dropdown">
-          <ul>
-            <li class="dropdown-item">New Slide</li>
-            <li class="dropdown-item">Duplicate Slide</li>
-            <li class="dropdown-item">Delete Slide</li>
-            <li class="dropdown-item">Slide Layout</li>
-          </ul>
-        </div>
-      </button>
-      <button class="btn btn-help">Help
-        <div class="dropdown">
-          <ul>
-            <li class="dropdown-item">Documentation</li>
-            <li class="dropdown-item">Support</li>
-            <li class="dropdown-item">About</li>
-          </ul>
-        </div>
-      </button>
-    </nav>
-  </header>
-
-  <!-- Editor Container -->
-  <main class="editor-container">
-
-    <!-- Left Sidebar -->
-    <aside class="sidebar">
-
-      <!-- Slide Thumbnails -->
-      <section class="slides-panel">
-        <div class="sidebar-header">
-          <h3>Slides</h3>
-        </div>
-        <div class="slide-thumbnails">
-          <div class="mini-slide selected" data-slide-id="1">
-            <span class="slide-number">1</span>
-            <div class="slide-thumbnail"></div>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>ORIENTATION</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+  </head>
+  <body>
+      <!-- Top Toolbar -->
+      <header class="toolbar">
+          <div class="icon">
+              <img src="img/icon.png" alt="App Icon" class="icon-image" />
           </div>
+          <div class="project-name">
+              <h4>Project Name</h4>
+          </div>
+          <nav class="tools">
+              <button class="btn btn-file">File
+              <div class="dropdown">
+              <ul>
+                  <li class="dropdown-item">New</li>
+                  <li class="dropdown-item">Open</li>
+                  <li class="dropdown-item">Save</li>
+                  <li class="dropdown-item">Export</li>
+                  <li class="dropdown-item">Close</li>
+              </ul>
+              </div>
+          </button>
+          <button class="btn btn-undo">Undo</button>
+          <button class="btn btn-redo">Redo</button>
+          <button class="btn btn-insert">Insert
+              <div class="dropdown">
+              <ul>
+                  <li class="dropdown-item">Image</li>
+                  <li class="dropdown-item">Text</li>
+                  <li class="dropdown-item">Shape</li>
+                  <li class="dropdown-item">Video</li>
+              </ul>
+              </div>
+          </button>
+          <button class="btn btn-slide">Slide
+              <div class="dropdown">
+              <ul>
+                  <li class="dropdown-item">New Slide</li>
+                  <li class="dropdown-item">Duplicate Slide</li>
+                  <li class="dropdown-item">Delete Slide</li>
+                  <li class="dropdown-item">Slide Layout</li>
+              </ul>
+              </div>
+          </button>
+          <button class="btn btn-help">Help
+              <div class="dropdown">
+              <ul>
+                  <li class="dropdown-item">Documentation</li>
+                  <li class="dropdown-item">Support</li>
+                  <li class="dropdown-item">About</li>
+              </ul>
+              </div>
+          </button>
+          </nav>
+      </header>
+
+    <!-- Editor Container -->
+    <main class="editor-container">
+      
+      <!-- Left Sidebar -->
+      <aside class="sidebar">
+
+        <!-- Slide Thumbnails -->
+        <section class="slides-panel">
+          <div class="sidebar-header">
+            <h3>Slides</h3>
+          </div>
+          <div class="slide-thumbnails">
+            <div class="mini-slide selected" data-slide-id="1">
+              <span class="slide-number">1</span>
+              <div class="slide-thumbnail"></div>
+            </div>
+            <div class="mini-slide" data-slide-id="2">
+              <span class="slide-number">2</span>
+              <div class="slide-thumbnail"></div>
+            </div>
+            <div class="mini-slide" data-slide-id="3">
+              <span class="slide-number">3</span>
+              <div class="slide-thumbnail"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tools List -->
+        <section class="tools-panel">
+          <div class="sidebar-header">
+            <h3>Tools</h3>
+          </div>
+          <div class="tool-list">
+            <input type="button" id="tool-text" class="tool-item" value="🅣 Text">
+              <input type="file" id="upload-image" accept="image/*" style="display:none" />
+              <div class="tool-font-group">
+    <label for="font-select">Font:</label>
+    <select id="font-select">
+      <option value="Arial">Arial</option>
+      <option value="Times New Roman">Times New Roman</option>
+      <option value="Courier New">Courier New</option>
+      <option value="Georgia">Georgia</option>
+
+    </select>
+
+    <label for="font-size">Size:</label>
+    <input type="number" id="font-size" min="8" max="120" value="24">
+  </div>
+              <button id="tool-image">🖼 Image</button>
+            
+            <div class="tool-shape-group">
+              <label>Shape:</label>
+              <select id="shape-select" class="tool-dropdown">
+                <option value="rect">Rectangle</option>
+                <option value="circle">Circle</option>
+                <option value="triangle">Triangle</option>
+              </select>
+              <label>Color:</label>
+              <input type="color" id="shape-color" value="#2196f3">
+              <button id="tool-add-shape" class="tool-item">➕ Add Shape</button>
+            </div>
+            <input type="button" id="tool-video" class="tool-item" value="🎥 Video">
+          </div>
+        </section>
+
+      </aside>
+
+      <!-- Main Slide Canvas -->
+      <section class="canvas-area">
+        <div class="canvas-header">
+          <p>Editing Slide 1</p>
         </div>
+        <div class="slide-canvas">
+          <div class="slide" contenteditable="true">
+            <canvas id="slide-canvas" width="1000" height="563"></canvas>
+          </div>
+          <div class="add-slide-btn" title="Add New Slide">＋</div>
+        </div>
+        
       </section>
+    </main>
 
-      <!-- Tools List -->
-      <section class="tools-panel">
-        <div class="sidebar-header">
-          <h3>Tools</h3>
-        </div>
-        <div class="tool-list">
-          <div>
-            <label>Font:</label>
-            <select id="font-family">
-              <option value="Arial">Arial</option>
-              <option value="Georgia">Georgia</option>
-              <option value="Courier New">Courier New</option>
-              <option value="Times New Roman">Times New Roman</option>
-              <option value="Verdana">Verdana</option>
-            </select>
-          </div>
-          <div>
-            <label>Size:</label>
-            <input type="number" id="font-size" value="24" min="8" max="120">
-          </div>
-          <input type="button" id="tool-text" class="tool-item" value="🅣 Text">
-          <input type="file" id="upload-image" accept="image/*" style="display:none" />
-          <button id="tool-image">🖼 Image</button>
+    <!-- 
 
-          <div class="tool-shape-group">
-            <label>Shape:</label>
-            <select id="shape-select" class="tool-dropdown">
-              <option value="rect">Rectangle</option>
-              <option value="circle">Circle</option>
-              <option value="triangle">Triangle</option>
-            </select>
-            <label>Color:</label>
-            <input type="color" id="shape-color" value="#2196f3">
-            <button id="tool-add-shape" class="tool-item">➕ Add Shape</button>
-          </div>
-
-          <input type="button" id="tool-video" class="tool-item" value="🎥 Video">
-          <input type="file" id="upload-video" accept="video/*" style="display:none" />
-        </div>
-      </section>
-
-    </aside>
-
-    <!-- Main Slide Canvas -->
-    <section class="canvas-area">
-      <div class="canvas-header">
-        <p>Editing Slide 1</p>
-      </div>
-      <div class="slide-canvas">
-        <div class="slide">
-          <canvas id="slide-canvas" width="1000" height="563"></canvas>
-        </div>
-        <div class="add-slide-btn" title="Add New Slide">＋</div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 - "IVANOV GROUP - 2025" LTD.</p>
-  </footer>
-  <script src="script.js"></script>
-</body>
-</html>
+    <footer>
+      <p>&copy; 2025 - "IVANOV GROUP - 2025" LTD.</p>
+    </footer>
+  -->
+    <script src="fabric.js"></script>
+    <script src="interact.js"></script>
+  </body>
+  </html>
