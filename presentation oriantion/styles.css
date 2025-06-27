@@ -263,3 +263,7 @@
   height: 100%;       
   overflow: hidden;   
   }
+
+  .draggable.selected {
+  outline: 2px dashed #3399ff;
+}
