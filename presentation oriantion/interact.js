@@ -30,35 +30,53 @@ document.addEventListener('DOMContentLoaded', () => {
     wrapper.appendChild(iframe);
     canvasArea.appendChild(wrapper);
 
-    // Apply interact.js on the new wrapper
+    // Apply interact.js
     interact('#yt-wrapper')
-      .draggable({
-        onmove: event => {
-          const target = event.target;
-          const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
-          const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+  .draggable({
+    modifiers: [
+      interact.modifiers.restrictRect({
+        restriction: 'parent', // restrict to .slide-canvas
+        endOnly: true
+      })
+    ],
+    listeners: {
+      move(event) {
+        const target = event.target;
+        const x = (parseFloat(target.style.left) || 0) + event.dx;
+        const y = (parseFloat(target.style.top) || 0) + event.dy;
 
-          target.style.transform = `translate(${x}px, ${y}px)`;
-          target.setAttribute('data-x', x);
-          target.setAttribute('data-y', y);
-        }
-      })
-      .resizable({
-        edges: { left: true, right: true, bottom: true, top: true }
-      })
-      .on('resizemove', event => {
+        target.style.left = `${x}px`;
+        target.style.top = `${y}px`;
+      }
+    }
+  })
+  .resizable({
+    edges: { left: true, right: true, bottom: true, top: true },
+    listeners: {
+      move(event) {
         const target = event.target;
         let { width, height } = event.rect;
 
         target.style.width = width + 'px';
         target.style.height = height + 'px';
 
-        const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.deltaRect.left;
-        const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.deltaRect.top;
+        // Update position
+        const x = (parseFloat(target.style.left) || 0) + event.deltaRect.left;
+        const y = (parseFloat(target.style.top) || 0) + event.deltaRect.top;
 
-        target.style.transform = `translate(${x}px, ${y}px)`;
-        target.setAttribute('data-x', x);
-        target.setAttribute('data-y', y);
+        target.style.left = `${x}px`;
+        target.style.top = `${y}px`;
+      }
+    },
+    modifiers: [
+      interact.modifiers.restrictSize({
+        min: { width: 200, height: 150 }
+      }),
+      interact.modifiers.restrictEdges({
+        outer: 'parent',
+        endOnly: true
+      })
+    ]
       });
   });
-});
+    });
