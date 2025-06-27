@@ -111,4 +111,32 @@ document.addEventListener("DOMContentLoaded", function () {
         reader.readAsDataURL(file);
         fileInput.value = "";
     });
+
+    document.addEventListener('paste', function (e) {
+    if (e.clipboardData) {
+        const items = e.clipboardData.items;
+        if (!items) return;
+
+        for (let i = 0; i < items.length; i++) {
+            if (items[i].type.indexOf('image') !== -1) {
+                const blob = items[i].getAsFile();
+                const URLObj = window.URL || window.webkitURL;
+                const source = URLObj.createObjectURL(blob);
+
+                fabric.Image.fromURL(source, function (img) {
+                    img.set({
+                        left: 100,
+                        top: 100,
+                        scaleX: 0.5,
+                        scaleY: 0.5
+                    });
+                    canvas.add(img);
+                    canvas.requestRenderAll();
+                    URLObj.revokeObjectURL(source);
+                });
+            }
+        }
+    }
+});
+
 });

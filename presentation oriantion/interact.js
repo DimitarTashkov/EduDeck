@@ -134,5 +134,34 @@ document.addEventListener('DOMContentLoaded', () => {
   endOnly: true
 })
 
+document.addEventListener('paste', function (e) {
+        if (!e.clipboardData) return;
+
+        const items = e.clipboardData.items;
+        if (!items) return;
+
+        for (let i = 0; i < items.length; i++) {
+            const item = items[i];
+            if (item.type.indexOf('image') !== -1) {
+                const blob = item.getAsFile();
+                if (blob) {
+                    const url = URL.createObjectURL(blob);
+
+                    fabric.Image.fromURL(url, function (img) {
+                        img.set({
+                            left: 100,
+                            top: 100,
+                            scaleX: 0.5,
+                            scaleY: 0.5
+                        });
+                        canvas.add(img);
+                        canvas.requestRenderAll();
+                        URL.revokeObjectURL(url); // clean up
+                    });
+                }
+            }
+        }
+    });
+
   });
 });
