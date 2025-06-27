@@ -264,6 +264,16 @@
   overflow: hidden;   
   }
 
-  .draggable.selected {
-  outline: 2px dashed #3399ff;
+ .draggable {
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  cursor: move;
+  user-select: none;
+  transition: box-shadow 0.2s ease;
+}
+
+.draggable.selected {
+  border-color: #1a73e8;
+  box-shadow: 0 0 10px #1a73e8;
+  z-index: 1100; /* make sure it’s on top */
 }
