@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     borderContainer.style.position = 'relative';
     borderContainer.style.width = '100%';
     borderContainer.style.height = '100%';
-    borderContainer.style.padding = '6px';  // border thickness
+    borderContainer.style.padding = '10px';  // border thickness
     borderContainer.style.boxSizing = 'border-box';
     borderContainer.style.border = '3px solid transparent'; // default no visible border
     borderContainer.style.cursor = 'pointer';
@@ -128,5 +128,11 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault(); // Prevent page navigation (Backspace)
       activeElement.remove();
     }
+
+    interact.modifiers.restrictRect({
+  restriction: 'parent',
+  endOnly: true
+})
+
   });
 });
